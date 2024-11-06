@@ -1,0 +1,35 @@
+{
+"name": "Calculadora de Peso",
+"short_name": "CDP",
+"description": "Calculadora de peso",
+"display": "standalone",
+"start_url": ".",
+"background_color": "#fff",
+"theme_color": "#fff",
+"icons": [
+  {
+    "src": "/img/icons/icon192x192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  },
+  {
+    "src": "/img/icons/icon512x512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }
+],
+"screenshots": [
+{
+  "src": "/img/screenshot-wide.png",
+  "sizes": "1200x800",
+  "type": "image/png",
+  "form_factor": "wide"
+},
+{
+  "src": "/img/screenshot-narrow.png",
+  "sizes": "640x960",
+  "type": "image/png",
+  "form_factor": "narrow"
+}
+]
+}
