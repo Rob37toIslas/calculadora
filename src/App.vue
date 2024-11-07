@@ -1,6 +1,6 @@
 <template>
   <div :class="theme" class="principal">
-    <h1>Calculadora de IMC</h1>
+    <h1>Calculadora de Peso xD</h1>
     <h2>Ingresa tu peso</h2>
 
     <input type="number" v-model="numero" placeholder="Peso en kg" />
