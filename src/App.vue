@@ -21,13 +21,10 @@
         <v-icon name="md-send-twotone" scale="2" animation="pulse"/> 
       </button>
     </div>
-
-    <!-- Botón flotante para cambiar de tema -->
     <button @click="toggleTheme" class="theme-toggle-button">
       <v-icon :name="themeIcon" scale="2" animation="pulse"/>
     </button>
 
-    <!-- Modal para mostrar la imagen según el peso -->
     <modal
       :isVisible="showModal"
       :peso="numero"
@@ -54,33 +51,26 @@ export default {
       numero: "",
       numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
       showModal: false,
-      themeIcon: "gi-sun-priest", // Ícono de sol para tema oscuro
+      themeIcon: "gi-sun-priest",
      
       
     };
   },
   methods: {
     updateInput(value) {
-      this.numero += value; // Agregar el valor al campo de texto
+      this.numero += value; 
     },
     deleteLastDigit() {
-      this.numero = this.numero.slice(0, -1); // Eliminar el último dígito
+      this.numero = this.numero.slice(0, -1); 
     },
-    // saveInput() {
-    //   if (this.numero === "") {
-    //     alert("No has ingresado un valor.");
-    //   } else {
-    //     alert(`Valor guardado: ${this.numero}`);
-    //   }
-    // },
+
     toggleTheme() {
-      // Cambiar el tema y el ícono de acuerdo al estado actual
       if (this.theme === "dark-theme") {
         this.theme = "light-theme";
-        this.themeIcon = "gi-evil-moon"; // Cambiar ícono a luna cuando el tema es claro
+        this.themeIcon = "gi-evil-moon"; 
       } else {
         this.theme = "dark-theme";
-        this.themeIcon = "gi-sun-priest"; // Cambiar ícono a sol cuando el tema es oscuro
+        this.themeIcon = "gi-sun-priest"; 
       }
     },
     evaluarPeso() {
