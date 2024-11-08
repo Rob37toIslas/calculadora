@@ -11,7 +11,7 @@
   import bajoPesoImg from '@/assets/images.jpeg';
   import normalPesoImg from '@/assets/chido.jpg';
   import sobrepesoImg from '@/assets/12482.png';
-  import soundFile from '@/assets/oyegelda.MP3'; 
+  import soundFile from '@/assets/oyegelda.mp3'; 
   
   export default {
     data() {
