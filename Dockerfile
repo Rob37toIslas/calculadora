@@ -10,7 +10,7 @@ COPY . .
 # Instalar las dependencias del proyecto
 RUN npm install
 
-# Exponer el puerto en el que se ejecutará la aplicación (por defecto 8080 para Vue.js)
+# Exponer el puerto en el que se ejecutará la aplicación (por defecto 5173 para Vue.js)
 EXPOSE 5173
 
 # Comando para ejecutar la aplicación en modo desarrollo
