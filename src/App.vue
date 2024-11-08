@@ -3,7 +3,7 @@
     <h1>Calculadora de Peso xD</h1>
     <h2>Ingresa tu peso</h2>
 
-    <input type="number" v-model="numero" placeholder="Peso en kg" />
+    <input type="number" v-model="numero" placeholder="Peso en kg" :class="theme" />
 
     <div class="number-grid">
       <div
@@ -71,7 +71,7 @@ export default {
       } else {
         this.theme = "dark-theme";
         this.themeIcon = "gi-sun-priest"; 
-      }
+      };
     },
     evaluarPeso() {
       if (this.numero) {

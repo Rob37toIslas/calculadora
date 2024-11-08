@@ -1,22 +1,23 @@
 const CACHE_NAME = 'v1';
 const urlsToCache = [
-  '/',                // URL base
-  '/index.html',      // HTML principal
+  '/',               
+  '/index.html',      
   '/manifest.json', 
   '/sw.js',   
-  '/img/icons/icon192x192.png',  // Icono de la PWA
-  '/img/icons/icon512x512.png',  // Icono de la PWA
+
+  '/img/icons/icon192x192.png',  
+  '/img/icons/icon512x512.png',  
   '/src/main.js',   
-  '/src/assets/images.jpeg', // Otro icono necesario
   '/src/app.vue',   
   '/src/components/modal.vue',  
-  '/src/registerServiceWorker.js', // Registro del SW
-  '/src/assets/main.css',   // Archivo CSS principal
-  '/src/assets/12482.jpg', // Otro icono necesario
-  '/src/assets/chido.jpg', // Otro icono necesario
-  '/src/assets/images.jpeg', // Otro icono necesario
-  '/src/assets/oyegelda.mp3', // Otro icono necesario
-  '/src/assets/main.css', // Otro icono necesario
+
+  '/src/registerServiceWorker.js', 
+
+  '/src/assets/12482.png', 
+  '/src/assets/chido.jpg', 
+  '/src/assets/images.jpeg', 
+  '/src/assets/oyegelda.mp3', 
+  '/src/assets/main.css', 
 ];
 
 self.addEventListener('install', (event) => {
@@ -35,10 +36,15 @@ self.addEventListener('fetch', (event) => {
         if (response) {
           return response;
         }
-        return fetch(event.request);
+        return fetch(event.request).catch(() => {
+          if (event.request.destination === 'document') {
+            return caches.match(urlsToCache);
+          }
+        });
       })
   );
 });
+
 
 self.addEventListener('activate', (event) => {
   const cacheWhitelist = [CACHE_NAME];

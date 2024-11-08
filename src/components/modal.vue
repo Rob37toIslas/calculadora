@@ -11,14 +11,13 @@
   import bajoPesoImg from '@/assets/images.jpeg';
   import normalPesoImg from '@/assets/chido.jpg';
   import sobrepesoImg from '@/assets/12482.png';
-  import obesidadImg from '@/assets/12482.png';
-  import soundFile from '@/assets/oyegelda.MP3'; // Importar el archivo de sonido
+  import soundFile from '@/assets/oyegelda.MP3'; 
   
   export default {
     data() {
       return {
         img: '',
-        sound: null, // Propiedad para almacenar la instancia de Audio
+        sound: null, 
       };
     },
     props: {
@@ -28,25 +27,25 @@
       },
       peso: {
         type: Number,
-        required: true,  // Asegúrate de que 'peso' esté marcado como requerido
+        required: true, 
       },
     },
     computed: {
       imageSrc() {
-        console.log('Peso:', this.peso);  // Verifica que el valor de 'peso' es correcto
         if (this.peso <= 50) {
           this.img = bajoPesoImg;
         } else if (this.peso >= 60 && this.peso <= 75) {
           this.img = normalPesoImg;
-        } else if (this.peso > 75 && this.peso <= 90) {
+        } else if (this.peso > 75) {
           this.img = sobrepesoImg;
           this.playSound();
         }
-        return this.img; // Devuelve la imagen correspondiente
+        return this.img; 
       },
       imageClass() {
         if (this.peso > 75) {
-          return 'rotate-image'; // Clase para aplicar la animación de giro
+          return 'rotate-image';
+        
         }
         return '';
       }
@@ -54,39 +53,39 @@
     methods: {
       playSound() {
         if (!this.sound) {
-          // Solo crear una nueva instancia si no existe
-          this.sound = new Audio(soundFile); // Crear una nueva instancia de Audio
-          this.sound.load(); // Cargar el sonido
+
+          this.sound = new Audio(soundFile);
+          this.sound.load(); 
           this.sound.oncanplaythrough = () => {
-            this.sound.play(); // Reproducir sonido solo cuando el archivo esté listo para reproducirse
+            this.sound.play(); 
           };
           this.sound.onerror = (error) => {
-            console.error('Error al cargar el sonido:', error); // Manejo de errores
+            console.error('Error al cargar el sonido:', error); 
           };
         } else {
-          this.sound.play(); // Si el audio ya está cargado, solo reproducirlo
+          this.sound.play();
         }
       },
       closeModal() {
         if (this.sound) {
-          this.sound.pause(); // Detener el sonido
-          this.sound.currentTime = 0; // Reiniciar el sonido para que empiece desde el inicio la próxima vez
-          this.sound = null; // Eliminar la instancia del sonido cuando se cierre el modal
+          this.sound.pause(); 
+          this.sound.currentTime = 0; 
+          this.sound = null;
         }
-        this.$emit('update:isVisible', false); // Emitir el evento para cerrar el modal
+        this.$emit('update:isVisible', false); 
       },
     },
     mounted() {
-      // Si ya tienes un sonido cargado, no lo cargas otra vez
-      if (this.sound) {
-        this.sound.load(); // Cargar el sonido al montar el componente
+ 
+      if (this.sound){
+        this.sound.load(); 
       }
     },
   };
   </script>
   
   <style scoped>
-  /* Estilos del modal */
+
   .modal-overlay {
     position: fixed;
     top: 0;
@@ -126,17 +125,17 @@
     cursor: pointer;
   }
   
-  /* Animación de giro */
+
   .rotate-image {
-    animation: spin 2s linear infinite; /* Aplicar la animación de giro */
+    animation: spin 2s linear infinite; 
   }
   
   @keyframes spin {
     0% {
-      transform: rotate(0deg); /* Comienza desde 0 grados */
+      transform: rotate(0deg); 
     }
     100% {
-      transform: rotate(360deg); /* Termina en 360 grados */
+      transform: rotate(360deg); 
     }
   }
   </style>
